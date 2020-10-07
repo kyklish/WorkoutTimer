@@ -2,6 +2,6 @@
 <resources>
 	<dimen name="marginTop">32dp</dimen>
 	<dimen name="margin">32dp</dimen>
-    <dimen name="buttonSize">40dp</dimen>
+	<dimen name="buttonSize">40dp</dimen>
 	<dimen name="textSize">32sp</dimen>
 </resources>

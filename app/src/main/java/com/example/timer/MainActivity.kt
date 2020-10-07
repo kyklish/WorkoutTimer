@@ -1,82 +1,65 @@
 package com.example.timer
 
 import android.app.Activity
-import android.graphics.Color
+import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.util.Log
+import android.widget.Button
 import android.widget.TextView
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.concurrent.TimeUnit
+import com.example.timer.Utils.Companion.logd
+import com.example.timer.Utils.Companion.toast
 
 
 class MainActivity : Activity() {
 
-    companion object {
-        // These represent different important times
-        // This is when the timer stops manually
-        const val DONE = 0L
+	companion object {
+		// "Pull Up" time for rest
+//		const val COUNTDOWN_PULL_UP: Long = (2 * 60 + 50) * 1000 // 02:50
+		const val COUNTDOWN_PULL_UP: Long = 5L // 00:05
 
-        // This is the number of milliseconds in a second
-        const val ONE_SECOND = 1000L
+		// "Press" time for rest
+//        const val COUNTDOWN_PRESS: Long = (0 * 60 + 50) * 1000 // 00:50
 
-        // "Pull Up" time for rest
-//        const val COUNTDOWN_PULL_UP : Long = (2 * 60 + 50) * 1000 // 02:50
-        const val COUNTDOWN_PULL_UP: Long = (0 * 60 + 3) * 1000 // 00:03
+		// "Bars" time for rest
+//        const val COUNTDOWN_BARS: Long = (1 * 60 + 50) * 1000 // 01:50
 
-        // "Press" time for rest
-        const val COUNTDOWN_PRESS: Long = (0 * 60 + 50) * 1000 // 00:50
+		lateinit var context: Context
+		lateinit var mediaPlayer: MediaPlayer
+	}
 
-        // "Bars" time for rest
-        const val COUNTDOWN_BARS: Long = (1 * 60 + 50) * 1000 // 01:50
-    }
 
-    private val mediaPlayer = MediaPlayer.create(this, R.raw.sneeze)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_main)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+		context = this
+		mediaPlayer = MediaPlayer.create(this, R.raw.timer_finished)
+		mediaPlayer.setOnErrorListener { mp, what, extra ->
+			// file:///F:/GAMES/Android/SDK/docs/reference/android/media/MediaPlayer.OnErrorListener.html
+			val strError = "MediaPlayer error: what = $what, extra = $extra"
+			logd(strError)
+			toast(strError)
+			// True if the method handled the error, false if it didn't.
+			false
+		}
 
-        val textPullUp1 = findViewById<TextView>(R.id.timerPullUp1)
-        textPullUp1.text = getTimeFromSeconds(TimeUnit.SECONDS.toMillis(COUNTDOWN_PULL_UP))
+		WorkoutTimer(
+				COUNTDOWN_PULL_UP,
+				findViewById(R.id.textPullUp1),
+				findViewById(R.id.buttonPullUpStart1),
+				findViewById(R.id.buttonPullUpStop1)
+		)
+		WorkoutTimer(
+				COUNTDOWN_PULL_UP,
+				findViewById(R.id.textPullUp2),
+				findViewById(R.id.buttonPullUpStart2),
+				findViewById(R.id.buttonPullUpStop2)
+		)
+	}
 
-        val timerPullUp1 = object : CountDownTimer(COUNTDOWN_PULL_UP, ONE_SECOND) {
-            override fun onTick(millisUntilFinished: Long) {
-                val secondsUntilFinished = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-                textPullUp1.text = getTimeFromSeconds(secondsUntilFinished)
-                Log.i("Timer", getTimeFromSeconds(secondsUntilFinished) as String)
-            }
-
-            override fun onFinish() {
-                textPullUp1.setBackgroundColor(Color.RED)
-                textPullUp1.setTextColor(Color.BLACK)
-//                if (mediaPlayer.isPlaying) {
-//                    mediaPlayer.stop()
-//                }
-                mediaPlayer.start()
-            }
-        }
-        timerPullUp1.start()
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mediaPlayer.reset()
-        mediaPlayer.release()
-    }
-
-    /**
-     * Provides a String representation of the given time
-     * @param seconds total amount of seconds
-     * @return String? in "mm:ss" format
-     */
-    private fun getTimeFromSeconds(seconds: Long): String? {
-        val timeZone = TimeZone.getTimeZone("UTC")
-        val dateFormatter = SimpleDateFormat("mm:ss", Locale.getDefault())
-        dateFormatter.timeZone = timeZone
-        return dateFormatter.format(Date(seconds * 1000))
-    }
+	override fun onStop() {
+		super.onStop()
+		mediaPlayer.reset()
+		mediaPlayer.release()
+	}
 }
