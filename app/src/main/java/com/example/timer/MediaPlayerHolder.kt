@@ -1,6 +1,7 @@
 package com.example.timer
 
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.PowerManager
 import com.example.timer.Utils.Companion.logd
 import com.example.timer.Utils.Companion.toast
@@ -8,18 +9,28 @@ import com.example.timer.Utils.Companion.toast
 class MediaPlayerHolder(private val resId: Int) {
 	private var mediaPlayer: MediaPlayer? = null
 
+
 	fun mpStart() {
-		if (mediaPlayer == null) {
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+			// Delicate version of starting playing. Not work on KitKat 4.4.2
+			if (mediaPlayer == null) {
+				mpCreate()
+				mediaPlayer!!.start()
+				logd("mediaPlayer.start()")
+			} else {
+				mediaPlayer?.apply {
+					stop()
+					prepare()
+					start()
+					logd("mediaPlayer.stop().prepare().start()")
+				}
+			}
+		} else {
+			// Aggressive version of starting playing. Work on KitKat 4.4.2
+			mpRelease()
 			mpCreate()
 			mediaPlayer!!.start()
 			logd("mediaPlayer.start()")
-		} else {
-			mediaPlayer?.apply {
-				stop()
-				prepare()
-				start()
-				logd("mediaPlayer.stop().prepare().start()")
-			}
 		}
 	}
 
