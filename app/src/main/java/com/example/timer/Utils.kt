@@ -10,11 +10,11 @@ class Utils {
 		/**
 		 * Provides a String representation of the given time
 		 * @param seconds total amount of seconds
-		 * @return String in "mm:ss" format
+		 * @return String in "HH:mm:ss" format
 		 */
 		fun getTimeFromSeconds(seconds: Long): String {
 			val timeZone = TimeZone.getTimeZone("UTC")
-			val dateFormatter = SimpleDateFormat("mm:ss", Locale.getDefault())
+			val dateFormatter = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
 			dateFormatter.timeZone = timeZone
 			return dateFormatter.format(Date(seconds * 1000))
 		}
