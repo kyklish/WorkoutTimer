@@ -2,7 +2,6 @@ package com.example.timer
 
 import android.util.Log
 import android.widget.Toast
-import com.example.timer.MainActivity.Companion.context
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,7 +24,7 @@ class Utils {
 		}
 
 		fun toast(message: String) {
-			Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+			Toast.makeText(App.appContext, message, Toast.LENGTH_SHORT).show()
 		}
 	}
 }
