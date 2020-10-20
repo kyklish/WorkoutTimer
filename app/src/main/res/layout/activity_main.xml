@@ -1,252 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@color/grey"
-	tools:context=".MainActivity">
+	android:fillViewport="true"> <!--IMPORTANT otherwise background img. will not fill the whole screen -->
 
-
-	<TextView
-		android:id="@+id/textInfo"
-		android:layout_width="wrap_content"
+	<LinearLayout
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="@dimen/marginTop"
-		android:text="@string/textInfo"
-		android:textSize="@dimen/textSize" />
-
-	<RelativeLayout
-		android:id="@+id/rowPullUp1"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/textInfo"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="@dimen/margin">
+		android:background="@color/grey"
+		android:gravity="center_horizontal"
+		android:orientation="vertical"
+		tools:context=".MainActivity">
 
 		<TextView
-			android:id="@+id/textPullUp1"
+			android:id="@+id/textInfo"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerVertical="true"
-			android:textSize="@dimen/textSize"
-			tools:text="02:50" />
+			android:layout_marginTop="@dimen/marginTop"
+			android:text="@string/textInfo"
+			android:textSize="@dimen/textSize" />
 
-		<Button
-			android:id="@+id/buttonPullUpStart1"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/textPullUp1"
-			android:background="@drawable/ic_start" />
-
-		<Button
-			android:id="@+id/buttonPullUpStop1"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/buttonPullUpStart1"
-			android:background="@drawable/ic_stop"
-			android:visibility="invisible"
-			tools:visibility="visible" />
-	</RelativeLayout>
-
-	<RelativeLayout
-		android:id="@+id/rowPullUp2"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/rowPullUp1"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="@dimen/margin">
-
-		<TextView
-			android:id="@+id/textPullUp2"
+		<LinearLayout
+			android:id="@+id/rowPullUp1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerVertical="true"
-			android:textSize="@dimen/textSize"
-			tools:text="02:50" />
+			android:layout_marginTop="@dimen/margin"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
 
-		<Button
-			android:id="@+id/buttonPullUpStart2"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/textPullUp2"
-			android:background="@drawable/ic_start" />
+			<TextView
+				android:id="@+id/textPullUp1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/textSize"
+				tools:text="02:50" />
 
-		<Button
-			android:id="@+id/buttonPullUpStop2"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/buttonPullUpStart2"
-			android:background="@drawable/ic_stop"
-			android:visibility="invisible"
-			tools:visibility="visible" />
-	</RelativeLayout>
+			<Button
+				android:id="@+id/buttonPullUpStart1"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_start" />
 
-	<RelativeLayout
-		android:id="@+id/rowPress1"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/rowPullUp2"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="@dimen/margin">
+			<Button
+				android:id="@+id/buttonPullUpStop1"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_stop"
+				android:visibility="invisible"
+				tools:visibility="visible" />
+		</LinearLayout>
 
-		<TextView
-			android:id="@+id/textPress1"
+		<LinearLayout
+			android:id="@+id/rowPullUp2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerVertical="true"
-			android:textSize="@dimen/textSize"
-			tools:text="00:50" />
+			android:layout_marginTop="@dimen/margin"
+			android:gravity="center_vertical">
 
-		<Button
-			android:id="@+id/buttonPressStart1"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/textPress1"
-			android:background="@drawable/ic_start" />
+			<TextView
+				android:id="@+id/textPullUp2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/textSize"
+				tools:text="02:50" />
 
-		<Button
-			android:id="@+id/buttonPressStop1"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/buttonPressStart1"
-			android:background="@drawable/ic_stop"
-			android:visibility="invisible"
-			tools:visibility="visible" />
-	</RelativeLayout>
+			<Button
+				android:id="@+id/buttonPullUpStart2"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_start" />
 
-	<RelativeLayout
-		android:id="@+id/rowPress2"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/rowPress1"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="@dimen/margin">
+			<Button
+				android:id="@+id/buttonPullUpStop2"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_stop"
+				android:visibility="invisible"
+				tools:visibility="visible" />
+		</LinearLayout>
 
-		<TextView
-			android:id="@+id/textPress2"
+		<LinearLayout
+			android:id="@+id/rowPress1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerVertical="true"
-			android:textSize="@dimen/textSize"
-			tools:text="00:50" />
+			android:layout_marginTop="@dimen/margin"
+			android:gravity="center_vertical">
 
-		<Button
-			android:id="@+id/buttonPressStart2"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/textPress2"
-			android:background="@drawable/ic_start" />
+			<TextView
+				android:id="@+id/textPress1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/textSize"
+				tools:text="00:50" />
 
-		<Button
-			android:id="@+id/buttonPressStop2"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/buttonPressStart2"
-			android:background="@drawable/ic_stop"
-			android:visibility="invisible"
-			tools:visibility="visible" />
-	</RelativeLayout>
+			<Button
+				android:id="@+id/buttonPressStart1"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_start" />
 
-	<RelativeLayout
-		android:id="@+id/rowBars1"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/rowPress2"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="@dimen/margin">
+			<Button
+				android:id="@+id/buttonPressStop1"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_stop"
+				android:visibility="invisible"
+				tools:visibility="visible" />
+		</LinearLayout>
 
-		<TextView
-			android:id="@+id/textBars1"
+		<LinearLayout
+			android:id="@+id/rowPress2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerVertical="true"
-			android:textSize="@dimen/textSize"
-			tools:text="01:50" />
+			android:layout_marginTop="@dimen/margin"
+			android:gravity="center_vertical">
 
-		<Button
-			android:id="@+id/buttonBarsStart1"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/textBars1"
-			android:background="@drawable/ic_start" />
+			<TextView
+				android:id="@+id/textPress2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/textSize"
+				tools:text="00:50" />
 
-		<Button
-			android:id="@+id/buttonBarsStop1"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/buttonBarsStart1"
-			android:background="@drawable/ic_stop"
-			android:visibility="invisible"
-			tools:visibility="visible" />
-	</RelativeLayout>
+			<Button
+				android:id="@+id/buttonPressStart2"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_start" />
 
-	<RelativeLayout
-		android:id="@+id/rowBars2"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/rowBars1"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="@dimen/margin">
+			<Button
+				android:id="@+id/buttonPressStop2"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_stop"
+				android:visibility="invisible"
+				tools:visibility="visible" />
+		</LinearLayout>
 
-		<TextView
-			android:id="@+id/textBars2"
+		<LinearLayout
+			android:id="@+id/rowBars1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerVertical="true"
-			android:textSize="@dimen/textSize"
-			tools:text="01:50" />
+			android:layout_marginTop="@dimen/margin"
+			android:gravity="center_vertical">
+
+			<TextView
+				android:id="@+id/textBars1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/textSize"
+				tools:text="01:50" />
+
+			<Button
+				android:id="@+id/buttonBarsStart1"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_start" />
+
+			<Button
+				android:id="@+id/buttonBarsStop1"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_stop"
+				android:visibility="invisible"
+				tools:visibility="visible" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/rowBars2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/margin"
+			android:gravity="center_vertical">
+
+			<TextView
+				android:id="@+id/textBars2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/textSize"
+				tools:text="01:50" />
+
+			<Button
+				android:id="@+id/buttonBarsStart2"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_start" />
+
+			<Button
+				android:id="@+id/buttonBarsStop2"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
+				android:layout_marginStart="@dimen/margin"
+				android:background="@drawable/ic_stop"
+				android:visibility="invisible"
+				tools:visibility="visible" />
+		</LinearLayout>
 
 		<Button
-			android:id="@+id/buttonBarsStart2"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/textBars2"
-			android:background="@drawable/ic_start" />
-
-		<Button
-			android:id="@+id/buttonBarsStop2"
-			android:layout_width="@dimen/buttonSize"
-			android:layout_height="@dimen/buttonSize"
-			android:layout_centerVertical="true"
-			android:layout_marginStart="@dimen/margin"
-			android:layout_toEndOf="@id/buttonBarsStart2"
+			android:id="@+id/buttonStopAll"
+			android:layout_width="@dimen/buttonSizeBig"
+			android:layout_height="@dimen/buttonSizeBig"
+			android:layout_marginTop="@dimen/margin"
 			android:background="@drawable/ic_stop"
-			android:visibility="invisible"
-			tools:visibility="visible" />
-	</RelativeLayout>
-
-	<Button
-		android:id="@+id/buttonStopAll"
-		android:layout_width="@dimen/buttonSize"
-		android:layout_height="@dimen/buttonSize"
-		android:layout_below="@id/rowBars2"
-		android:layout_centerHorizontal="true"
-		android:layout_marginStart="@dimen/margin"
-		android:layout_marginTop="@dimen/margin"
-		android:background="@drawable/ic_stop"
-		android:onClick="stopTimers" />
-
-</RelativeLayout>
+			android:onClick="stopTimers" />
+	</LinearLayout>
+</ScrollView>
