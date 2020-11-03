@@ -21,26 +21,12 @@ class WorkoutTimer(
 		const val ONE_SECOND_IN_MILLIS = 1000L
 	}
 
-	private lateinit var timer: CountDownTimer
+	private var timer: CountDownTimer
 
 	init {
 		textViewTime.text = getTimeFromSeconds(secondsInFuture)
-
-		buttonStart.setOnClickListener {
-			it.visibility = View.INVISIBLE
-			buttonStop.visibility = View.VISIBLE
-			timer.start()
-		}
-
-		buttonStop.setOnClickListener {
-			it.visibility = View.INVISIBLE
-			buttonStart.visibility = View.VISIBLE
-			textViewTime.text = getTimeFromSeconds(secondsInFuture)
-			textViewTime.setTextColor(Color.WHITE)
-			@Suppress("DEPRECATION") // getColor(int id) is deprecated
-			textViewTime.setBackgroundColor(App.appContext!!.resources.getColor(R.color.grey))
-			timer.cancel()
-		}
+		buttonStart.setOnClickListener(::startTimer)
+		buttonStop.setOnClickListener { stopTimer() }
 
 		timer = object : CountDownTimer(
 			// Read comment in "onTick()" method about additional one second here.
@@ -66,5 +52,23 @@ class WorkoutTimer(
 
 			override fun onFinish() {}
 		}
+	}
+
+	@Suppress("UNUSED_PARAMETER")
+	private fun startTimer(view: View) {
+		buttonStart.visibility = View.INVISIBLE
+		buttonStop.visibility = View.VISIBLE
+		timer.start()
+	}
+
+	fun stopTimer() {
+		buttonStop.visibility = View.INVISIBLE
+		buttonStart.visibility = View.VISIBLE
+		textViewTime.text = getTimeFromSeconds(secondsInFuture)
+		textViewTime.setTextColor(Color.WHITE)
+		@Suppress("DEPRECATION") // getColor(int id) is deprecated
+		textViewTime.setBackgroundColor(App.appContext!!.resources.getColor(R.color.grey))
+		timer.cancel()
+		mediaPlayerHolder.mpRelease()
 	}
 }
