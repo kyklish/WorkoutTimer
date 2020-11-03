@@ -37,6 +37,7 @@ class WorkoutTimer(
 			buttonStart.visibility = View.VISIBLE
 			textViewTime.text = getTimeFromSeconds(secondsInFuture)
 			textViewTime.setTextColor(Color.WHITE)
+			@Suppress("DEPRECATION") // getColor(int id) is deprecated
 			textViewTime.setBackgroundColor(App.appContext!!.resources.getColor(R.color.grey))
 			timer.cancel()
 		}
