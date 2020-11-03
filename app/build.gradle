@@ -16,21 +16,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        garbage_key {
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            storeFile file('F:/GAMES/Android/.android/debug.keystore')
-            storePassword 'android'
-        }
-    }
-
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.garbage_key
+            signingConfig signingConfigs.debug
         }
     }
 
