@@ -90,4 +90,163 @@
 			tools:visibility="visible" />
 	</RelativeLayout>
 
+	<RelativeLayout
+		android:id="@+id/rowPress1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/rowPullUp2"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="@dimen/margin">
+
+		<TextView
+			android:id="@+id/textPress1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:textSize="@dimen/textSize"
+			tools:text="00:50" />
+
+		<Button
+			android:id="@+id/buttonPressStart1"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/textPress1"
+			android:background="@drawable/ic_start" />
+
+		<Button
+			android:id="@+id/buttonPressStop1"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/buttonPressStart1"
+			android:background="@drawable/ic_stop"
+			android:visibility="invisible"
+			tools:visibility="visible" />
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:id="@+id/rowPress2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/rowPress1"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="@dimen/margin">
+
+		<TextView
+			android:id="@+id/textPress2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:textSize="@dimen/textSize"
+			tools:text="00:50" />
+
+		<Button
+			android:id="@+id/buttonPressStart2"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/textPress2"
+			android:background="@drawable/ic_start" />
+
+		<Button
+			android:id="@+id/buttonPressStop2"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/buttonPressStart2"
+			android:background="@drawable/ic_stop"
+			android:visibility="invisible"
+			tools:visibility="visible" />
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:id="@+id/rowBars1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/rowPress2"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="@dimen/margin">
+
+		<TextView
+			android:id="@+id/textBars1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:textSize="@dimen/textSize"
+			tools:text="01:50" />
+
+		<Button
+			android:id="@+id/buttonBarsStart1"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/textBars1"
+			android:background="@drawable/ic_start" />
+
+		<Button
+			android:id="@+id/buttonBarsStop1"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/buttonBarsStart1"
+			android:background="@drawable/ic_stop"
+			android:visibility="invisible"
+			tools:visibility="visible" />
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:id="@+id/rowBars2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/rowBars1"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="@dimen/margin">
+
+		<TextView
+			android:id="@+id/textBars2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:textSize="@dimen/textSize"
+			tools:text="01:50" />
+
+		<Button
+			android:id="@+id/buttonBarsStart2"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/textBars2"
+			android:background="@drawable/ic_start" />
+
+		<Button
+			android:id="@+id/buttonBarsStop2"
+			android:layout_width="@dimen/buttonSize"
+			android:layout_height="@dimen/buttonSize"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="@dimen/margin"
+			android:layout_toEndOf="@id/buttonBarsStart2"
+			android:background="@drawable/ic_stop"
+			android:visibility="invisible"
+			tools:visibility="visible" />
+	</RelativeLayout>
+
+	<Button
+		android:id="@+id/buttonStopAll"
+		android:layout_width="@dimen/buttonSize"
+		android:layout_height="@dimen/buttonSize"
+		android:layout_below="@id/rowBars2"
+		android:layout_centerHorizontal="true"
+		android:layout_marginStart="@dimen/margin"
+		android:layout_marginTop="@dimen/margin"
+		android:background="@drawable/ic_stop"
+		android:onClick="stopTimers" />
+
 </RelativeLayout>
