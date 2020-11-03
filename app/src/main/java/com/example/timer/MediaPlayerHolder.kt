@@ -38,6 +38,7 @@ class MediaPlayerHolder(private val resId: Int) {
 		mediaPlayer = MediaPlayer.create(App.appContext, resId)
 		logd("MediaPlayer.create()")
 		mediaPlayer?.apply {
+			@Suppress("UNUSED_ANONYMOUS_PARAMETER")
 			setOnErrorListener { mp, what, extra ->
 				val strError = "MediaPlayer error: what = $what, extra = $extra"
 				logd(strError)
