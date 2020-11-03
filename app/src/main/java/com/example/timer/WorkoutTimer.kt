@@ -43,23 +43,28 @@ class WorkoutTimer(
 		}
 
 		timer = object : CountDownTimer(
-			secondsInFuture * ONE_SECOND_IN_MILLIS,
+			// Read comment in "onTick()" method about additional one second here.
+			(secondsInFuture + 1) * ONE_SECOND_IN_MILLIS,
 			ONE_SECOND_IN_MILLIS
 		) {
 			override fun onTick(millisUntilFinished: Long) {
-				val secondsUntilFinished = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+				val secondsUntilFinished = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - 1
 				textViewTime.text = getTimeFromSeconds(secondsUntilFinished)
 				logd(getTimeFromSeconds(secondsUntilFinished))
+				// Below is code, that must be in "onFinish()". It's workaround lag (approximately
+				// one second), that appears, if I do all work in "onFinish()" method. So I set timer
+				// to one second longer, and do "finish" work at one second before timer finished.
+				if (secondsUntilFinished <= 0) {
+					textViewTime.apply {
+						text = getTimeFromSeconds(0L)
+						setBackgroundColor(Color.RED)
+						setTextColor(Color.BLACK)
+					}
+					mediaPlayerHolder.mpStart()
+				}
 			}
 
-			override fun onFinish() {
-				textViewTime.apply {
-					text = getTimeFromSeconds(0L)
-					setBackgroundColor(Color.RED)
-					setTextColor(Color.BLACK)
-				}
-				mediaPlayerHolder.mpStart()
-			}
+			override fun onFinish() {}
 		}
 	}
 }
