@@ -44,7 +44,6 @@ class WorkoutTimer(
 					textViewTime.apply {
 						text = getTimeFromSeconds(0L)
 						setBackgroundColor(Color.RED)
-						setTextColor(Color.BLACK)
 					}
 					mediaPlayerHolder.mpStart()
 				}
@@ -58,6 +57,8 @@ class WorkoutTimer(
 	private fun startTimer(view: View) {
 		buttonStart.visibility = View.INVISIBLE
 		buttonStop.visibility = View.VISIBLE
+		textViewTime.setTextColor(Color.BLACK)
+		textViewTime.setBackgroundColor(Color.YELLOW)
 		timer.start()
 	}
 
