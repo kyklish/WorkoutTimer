@@ -20,6 +20,11 @@ class MainActivity : Activity() {
 		findViewById<Button>(R.id.buttonStopAll).setOnClickListener(::stopTimers)
 		mediaPlayerHolder = MediaPlayerHolder(R.raw.timer_finished)
 		timers = createTimers()
+
+		// https://developer.android.com/training/scheduling/wakelock
+		// Set wake lock in activity_layout.xml [android:keepScreenOn="true"] (which I did)
+		// OR set flag in MainActivity.kt
+//		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 	}
 
 	override fun onStop() {
