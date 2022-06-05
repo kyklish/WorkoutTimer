@@ -53,14 +53,17 @@ class MediaPlayerHolder(private val resId: Int) {
 				mpRelease()
 			}
 			setWakeMode(App.appContext, PowerManager.PARTIAL_WAKE_LOCK)
+			logd("PARTIAL_WAKE_LOCK - acquired")
 		}
 	}
 
 	fun mpRelease() {
 		mediaPlayer?.apply {
+			// in reset(), relese(), stop() wake lock automatically released
 			reset() // Without it: Warning - mediaPlayer went away with unhandled events
 			release()
 			logd("mediaPlayer.reset().release()")
+			logd("PARTIAL_WAKE_LOCK - released automatically")
 		}
 		mediaPlayer = null
 	}

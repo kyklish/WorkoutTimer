@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.example.timer">
 
-<!--	Need WAKE_LOCK permission for MediaPlayer, it crashes without it -->
+<!--	MediaPlayer use cpu wake lock to keep device awake to play sound -->
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 
 	<application
