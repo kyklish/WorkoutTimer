@@ -1,5 +1,6 @@
 package com.example.timer
 
+import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.PowerManager
@@ -10,12 +11,13 @@ class MediaPlayerHolder(private val resId: Int) {
 	private var mediaPlayer: MediaPlayer? = null
 
 
+	@SuppressLint("ObsoleteSdkInt")
 	fun mpStart() {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			// Delicate version of starting playing. Not work on KitKat 4.4.2
 			if (mediaPlayer == null) {
 				mpCreate()
-				mediaPlayer!!.start()
+				mediaPlayer?.start()
 				logd("mediaPlayer.start()")
 			} else {
 				mediaPlayer?.apply {
@@ -29,7 +31,7 @@ class MediaPlayerHolder(private val resId: Int) {
 			// Aggressive version of starting playing. Work on KitKat 4.4.2
 			mpRelease()
 			mpCreate()
-			mediaPlayer!!.start()
+			mediaPlayer?.start()
 			logd("mediaPlayer.start()")
 		}
 	}

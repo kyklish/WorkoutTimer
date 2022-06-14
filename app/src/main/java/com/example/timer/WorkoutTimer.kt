@@ -61,7 +61,9 @@ class WorkoutTimer(
 		textViewTime.text = getTimeFromSeconds(secondsInFuture)
 		textViewTime.setTextColor(Color.WHITE)
 		@Suppress("DEPRECATION") // getColor(int id) is deprecated
-		textViewTime.setBackgroundColor(App.appContext!!.resources.getColor(R.color.grey))
+		App.appContext?.let {
+			textViewTime.setBackgroundColor(it.resources.getColor(R.color.grey))
+		}
 		timer.cancel()
 		mediaPlayerHolder.mpRelease()
 	}
